@@ -10,14 +10,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  // Global image fallback so images never break
   window.__VELORA_FALLBACK__ = 'data:image/svg+xml;utf8,' + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect fill="#f5f5f5" width="100%" height="100%"/><text x="50%" y="48%" text-anchor="middle" fill="#767676" font-family="Helvetica,Arial,sans-serif" font-size="32" letter-spacing="8">VELORA</text><text x="50%" y="54%" text-anchor="middle" fill="#aaaaaa" font-family="Helvetica,Arial,sans-serif" font-size="12" letter-spacing="2">COMING SOON</text></svg>'
   );
   window.__imgErr = function(img){ img.onerror = null; img.src = window.__VELORA_FALLBACK__; };
 </script>
 <style>
-  /* ============ RESET & TOKENS ============ */
   :root{
     --ink:#111111; --white:#FFFFFF; --soft:#F5F5F5; --muted:#767676;
     --line:#E5E5E5; --sale:#D6001C; --success:#15803D; --danger:#DC2626;
@@ -39,7 +37,6 @@
   table{ border-collapse:collapse; width:100%; }
   h1,h2,h3,h4{ font-weight:500; letter-spacing:-0.01em; line-height:1.15; }
 
-  /* ============ LAYOUT ============ */
   .container{ max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
   .grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
   .grid-3{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
@@ -54,7 +51,6 @@
   .flex{ display:flex; } .items-center{ align-items:center; } .justify-between{ justify-content:space-between; }
   .gap-2{ gap:8px; } .gap-4{ gap:16px; } .gap-6{ gap:24px; }
 
-  /* ============ TYPOGRAPHY ============ */
   .h-hero{ font-size:32px; line-height:1.1; }
   @media (min-width:768px){ .h-hero{ font-size:56px; } }
   .h-section{ font-size:22px; margin-bottom:24px; }
@@ -69,7 +65,6 @@
   .line-through{ text-decoration:line-through; }
   .underline{ text-decoration:underline; text-underline-offset:3px; }
 
-  /* ============ BUTTONS ============ */
   .btn{ display:inline-flex; align-items:center; justify-content:center;
     height:44px; padding:0 24px; font-size:12px; font-weight:500;
     letter-spacing:0.1em; text-transform:uppercase; transition:background 150ms, color 150ms, opacity 150ms;
@@ -86,7 +81,6 @@
   .btn-icon{ width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; }
   .btn-icon:hover{ background:var(--soft); }
 
-  /* ============ FORM ============ */
   .input{ width:100%; height:44px; padding:0 12px; border:1px solid var(--line);
     background:#fff; outline:none; transition:border-color 150ms; }
   .input:focus{ border-color:var(--ink); }
@@ -99,7 +93,6 @@
   .field{ margin-bottom:14px; }
   .err{ color:var(--danger); font-size:12px; margin-top:4px; }
 
-  /* ============ BADGES ============ */
   .badge{ display:inline-block; padding:2px 8px; font-size:10px;
     letter-spacing:0.1em; text-transform:uppercase; }
   .badge-new{ background:#fff; color:var(--ink); border:1px solid var(--ink); }
@@ -109,13 +102,11 @@
   .badge-warn{ background:#fef3c7; color:#92400e; }
   .badge-danger{ background:#fee2e2; color:var(--danger); }
 
-  /* ============ ANNOUNCEMENT BAR ============ */
   .announce{ background:var(--ink); color:#fff; font-size:11px;
     letter-spacing:0.15em; text-transform:uppercase; height:32px;
     display:flex; align-items:center; justify-content:center; padding:0 16px;
     text-align:center; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 
-  /* ============ HEADER ============ */
   .header{ position:sticky; top:0; z-index:40; background:#fff;
     border-bottom:1px solid var(--line); }
   .header-main{ display:flex; align-items:center; justify-content:space-between;
@@ -139,7 +130,6 @@
     text-transform:uppercase; transition:opacity 150ms; }
   .header-nav a:hover{ opacity:0.6; }
 
-  /* Mega menu */
   .mega-wrap{ position:relative; }
   .mega-menu{ display:none; position:absolute; top:100%; left:0; right:0;
     background:#fff; border-top:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.06);
@@ -152,7 +142,6 @@
   .mega-links a:hover{ color:var(--ink); }
   .mega-feature img{ width:100%; aspect-ratio:3/4; object-fit:cover; }
 
-  /* ============ SEARCH OVERLAY ============ */
   .overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:60;
     display:none; }
   .overlay.open{ display:block; }
@@ -161,7 +150,6 @@
     border-bottom:1px solid var(--ink); padding-bottom:12px; }
   .search-input-wrap input{ flex:1; border:none; outline:none; font-size:18px; }
 
-  /* ============ MOBILE MENU ============ */
   .drawer-left{ position:fixed; top:0; left:0; bottom:0; width:80%; max-width:340px;
     background:#fff; z-index:70; transform:translateX(-100%);
     transition:transform 250ms ease; display:flex; flex-direction:column; }
@@ -172,7 +160,6 @@
   .drawer-left nav a{ display:block; padding:12px 0; font-size:13px;
     letter-spacing:0.1em; text-transform:uppercase; border-bottom:1px solid var(--soft); }
 
-  /* ============ CART DRAWER ============ */
   .cart-drawer{ position:fixed; top:0; right:0; bottom:0; width:100%;
     max-width:420px; background:#fff; z-index:70; display:flex;
     flex-direction:column; transform:translateX(100%);
@@ -183,7 +170,6 @@
   .cart-drawer-body{ flex:1; overflow-y:auto; }
   .cart-drawer-footer{ border-top:1px solid var(--line); padding:16px; }
 
-  /* ============ PRODUCT CARD ============ */
   .product-card{ display:block; }
   .product-card-img{ position:relative; aspect-ratio:3/4; overflow:hidden;
     background:var(--soft); }
@@ -209,7 +195,6 @@
   .swatch{ width:10px; height:10px; border-radius:50%;
     border:1px solid var(--line); }
 
-  /* ============ PRODUCT DETAIL ============ */
   .pdp{ display:grid; grid-template-columns:1fr; gap:32px; }
   @media (min-width:768px){ .pdp{ grid-template-columns:1fr 1fr; gap:64px; } }
   .pdp-gallery-main{ aspect-ratio:3/4; background:var(--soft); overflow:hidden; }
@@ -236,7 +221,6 @@
   .detail-acc[open] summary::after{ content:'−'; }
   .detail-acc .acc-body{ padding:0 0 16px; color:var(--muted); font-size:13px; }
 
-  /* ============ HOME HERO ============ */
   .hero{ position:relative; height:560px; }
   @media (min-width:768px){ .hero{ height:650px; } }
   .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
@@ -253,13 +237,11 @@
   .category-card-label{ position:absolute; bottom:24px; left:24px;
     color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.4); }
 
-  /* ============ NEWSLETTER ============ */
   .newsletter{ background:var(--soft); padding:64px 0; text-align:center; }
   .newsletter form{ max-width:440px; margin:0 auto;
     display:flex; gap:8px; flex-wrap:wrap; }
   .newsletter input{ flex:1; min-width:0; }
 
-  /* ============ FOOTER ============ */
   .footer{ border-top:1px solid var(--line); margin-top:64px; }
   .footer-cols{ display:grid; grid-template-columns:repeat(2,1fr);
     gap:32px; padding:48px 0; }
@@ -275,7 +257,6 @@
   @media (min-width:768px){ .footer-bottom{ flex-direction:row;
     justify-content:space-between; } }
 
-  /* ============ PAGE ============ */
   .page{ padding:32px 0; }
   .breadcrumb{ font-size:12px; color:var(--muted);
     margin-bottom:16px; }
@@ -294,11 +275,9 @@
   .chip:hover{ border-color:var(--ink); }
   .chip.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
 
-  /* ============ EMPTY STATE ============ */
   .empty{ padding:64px 24px; text-align:center; color:var(--muted); }
   .empty h3{ color:var(--ink); margin-bottom:12px; font-size:18px; }
 
-  /* ============ ADMIN ============ */
   .admin-layout{ display:grid; grid-template-columns:1fr; min-height:100vh; }
   @media (min-width:768px){ .admin-layout{ grid-template-columns:220px 1fr; } }
   .admin-side{ border-right:1px solid var(--line); padding:16px; }
@@ -320,7 +299,6 @@
   .admin-table th{ font-size:10px; text-transform:uppercase;
     letter-spacing:0.1em; color:var(--muted); font-weight:500; }
 
-  /* ============ TOAST ============ */
   .toast-wrap{ position:fixed; bottom:24px; right:24px; z-index:100;
     display:flex; flex-direction:column; gap:8px; }
   .toast{ background:var(--ink); color:#fff; padding:12px 20px;
@@ -331,7 +309,6 @@
   @keyframes slideIn{ from{ transform:translateX(100%); opacity:0; }
     to{ transform:translateX(0); opacity:1; } }
 
-  /* ============ CHECKOUT ============ */
   .checkout-layout{ display:grid; grid-template-columns:1fr; gap:32px; }
   @media (min-width:1024px){ .checkout-layout{ grid-template-columns:1fr 380px; } }
   .checkout-section{ margin-bottom:28px; }
@@ -344,7 +321,6 @@
   .qty-ctrl button{ width:30px; height:30px; font-size:14px; }
   .qty-ctrl span{ width:30px; text-align:center; font-size:12px; }
 
-  /* ============ A11Y ============ */
   .sr-only{ position:absolute; width:1px; height:1px; padding:0;
     margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
   :focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
@@ -354,13 +330,11 @@
        transition-duration:0.01ms !important; }
   }
 
-  /* Utility */
   .hidden{ display:none !important; }
   .mt-2{ margin-top:8px; } .mt-4{ margin-top:16px; } .mt-6{ margin-top:24px; }
   .mb-2{ margin-bottom:8px; } .mb-4{ margin-bottom:16px; } .mb-6{ margin-bottom:24px; }
   .py-8{ padding:32px 0; } .py-12{ padding:48px 0; } .py-16{ padding:64px 0; }
 
-  /* Supabase loading screen */
   .boot-screen{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
   .boot-screen p{ letter-spacing:0.4em; font-size:14px; font-weight:500; }
 </style>
@@ -403,9 +377,15 @@
   /* ============================================================
      AUTH STATE (cached, synchronous getSession for the rest of the app)
      ============================================================ */
-  let _currentUser = null;      // cached snapshot: { id, email, name, role }
-  let _authReady = false;       // has the initial session resolved?
-  let _authInitialized = false; // guarantees only one initial render
+  let _currentUser = null;
+  let _authReady = false;
+  let _authInitialized = false;
+
+  // Priority 1 — order caches for cloud-side reads
+  let _adminOrdersCache = null;
+  let _adminOrdersLoading = false;
+  let _customerOrdersCache = null;
+  let _customerOrdersLoading = false;
 
   function _sessionFromSupabase(session){
     if (!session || !session.user) return null;
@@ -421,7 +401,6 @@
   }
 
   function getSession(){ return _currentUser; }
-  // No-op: Supabase manages session persistence itself.
   function setSession(){ /* intentionally empty */ }
 
   /* ============================================================
@@ -451,7 +430,7 @@
     return '<img src="' + esc(src) + '" alt="' + esc(alt||'') + '" loading="lazy" onerror="window.__imgErr(this)" ' + (extra||'') + '>';
   }
 
-  /* ==================== STORAGE (products, cart, orders, coupons - unchanged) ==================== */
+  /* ==================== STORAGE ==================== */
   const DB = {
     get(k, def){
       try { const v = localStorage.getItem('velora_' + k);
@@ -631,12 +610,10 @@
     if (error) return toast(error.message || 'Could not create account', 'error');
 
     if (data.session){
-      // Email confirmation disabled — user is signed in immediately
       _currentUser = _sessionFromSupabase(data.session);
       toast('Account created');
       navigate('/account');
     } else {
-      // Email confirmation required
       toast('Account created — check your email to confirm');
       navigate('/login');
     }
@@ -651,7 +628,6 @@
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
 
     if (error){
-      // Supabase returns specific messages for invalid creds and unconfirmed emails
       return toast(error.message || 'Invalid email or password', 'error');
     }
 
@@ -665,6 +641,8 @@
   async function handleLogout(){
     await sb.auth.signOut();
     _currentUser = null;
+    _adminOrdersCache = null;
+    _customerOrdersCache = null;
     toast('Signed out');
     navigate('/');
   }
@@ -712,7 +690,6 @@
     const { data, error } = await sb.auth.updateUser(updates);
     if (error) return toast(error.message || 'Could not update profile', 'error');
 
-    // Refresh cache from the response
     if (data && data.user){
       _currentUser = {
         id: data.user.id,
@@ -848,54 +825,152 @@
   function getOrders(){ const o = DB.get('orders', []); return Array.isArray(o) ? o : []; }
   function saveOrders(list){ DB.set('orders', list); }
 
-  function placeOrder(payload){
+  // ----- Priority 1: Supabase-backed order mapping + loading -----
+  function mapSupabaseOrder(row){
+    return {
+      id: row.id,
+      orderNumber: row.order_number,
+      userId: row.user_id,
+      email: row.email,
+      phone: row.phone,
+      shipping: {
+        fullName: row.customer_name,
+        phone: row.phone,
+        line1: row.address_line1,
+        line2: row.address_line2 || '',
+        city: row.city,
+        state: row.state,
+        pincode: row.pincode,
+        country: row.country
+      },
+      items: (row.order_items || []).map(it => ({
+        productId: it.product_id,
+        variantKey: '',
+        name: it.product_name,
+        image: it.product_image,
+        size: it.size,
+        color: it.color,
+        unitPrice: it.unit_price,
+        qty: it.quantity,
+        lineTotal: it.line_total
+      })),
+      subtotal: row.subtotal,
+      discount: row.discount,
+      shippingCost: row.shipping_cost,
+      total: row.total,
+      couponCode: row.coupon_code,
+      paymentMethod: row.payment_method,
+      paymentStatus: row.payment_status,
+      status: row.status,
+      createdAt: row.created_at
+    };
+  }
+
+  async function loadOrdersFromSupabase(scope){
+    const isAdmin = scope === 'admin';
+    if (isAdmin) _adminOrdersLoading = true; else _customerOrdersLoading = true;
+
+    const { data, error } = await sb
+      .from('orders')
+      .select('*, order_items(*)')
+      .order('created_at', { ascending: false });
+
+    if (isAdmin) _adminOrdersLoading = false; else _customerOrdersLoading = false;
+
+    const mapped = (data || []).map(mapSupabaseOrder);
+    if (isAdmin) _adminOrdersCache = mapped;
+    else _customerOrdersCache = mapped;
+
+    if (error){
+      toast('Could not load orders: ' + error.message, 'error');
+    }
+    render();
+  }
+
+  async function placeOrder(payload){
     const cart = cartDetailed();
-    if (cart.items.length === 0) return { ok:false, error:'Cart is empty' };
+    if (cart.items.length === 0) return { ok:false, error:'Your bag is empty.' };
 
     for (const it of cart.items){
-      if (it.variant.stock < it.qty) return { ok:false, error:'Not enough stock: ' + it.product.name };
+      if (it.variant.stock < it.qty) {
+        return { ok:false, error:'Not enough stock for ' + it.product.name + '. Please adjust your bag.' };
+      }
     }
-
-    let discount = 0;
-    let appliedCoupon = null;
-    if (payload.couponCode){
-      const v = validateCoupon(payload.couponCode, cart.subtotal);
-      if (!v.ok) return { ok:false, error: v.error };
-      discount = v.discount;
-      appliedCoupon = v.coupon;
-    }
-    const total = cart.subtotal - discount + cart.shipping;
 
     const sessionUser = getSession();
+
+    const orderPayload = {
+      user_id:        sessionUser ? sessionUser.id : null,
+      order_number:   orderNo(),
+      customer_name:  payload.address.fullName,
+      email:          payload.email,
+      phone:          payload.phone,
+      address_line1:  payload.address.line1,
+      address_line2:  payload.address.line2 || null,
+      city:           payload.address.city,
+      state:          payload.address.state,
+      pincode:        payload.address.pincode,
+      country:        'India',
+      coupon_code:    payload.couponCode || null,
+      payment_method: payload.paymentMethod
+    };
+
+    const itemsPayload = cart.items.map(i => ({
+      product_id: i.product.id,
+      quantity:   i.qty,
+      size:       i.variant.size,
+      color:      i.variant.color
+    }));
+
+    let rpc;
+    try {
+      rpc = await sb.rpc('create_order_with_items', {
+        p_order: orderPayload,
+        p_items: itemsPayload
+      });
+    } catch (e){
+      return { ok:false, error: (e && e.message) || 'Could not reach the server. Please try again.' };
+    }
+
+    if (rpc.error){
+      return { ok:false, error: rpc.error.message || 'Could not place order. Please try again.' };
+    }
+
+    const saved = Array.isArray(rpc.data) ? rpc.data[0] : rpc.data;
+    if (!saved || !saved.id){
+      return { ok:false, error:'Order was not saved. Please try again.' };
+    }
+
     const order = {
-      id: uid(),
-      orderNumber: orderNo(),
+      id: saved.id,
+      orderNumber: saved.order_number,
       userId: sessionUser ? sessionUser.id : null,
       email: payload.email,
       phone: payload.phone,
       shipping: payload.address,
-      items: cart.items.map(i => ({
-        productId: i.product.id,
-        variantKey: i.variant.key,
-        name: i.product.name,
-        image: i.product.images[0],
-        size: i.variant.size,
-        color: i.variant.color,
-        unitPrice: i.unitPrice,
-        qty: i.qty,
-        lineTotal: i.lineTotal
+      items: (saved.items || []).map(it => ({
+        productId: it.product_id,
+        variantKey: '',
+        name: it.product_name,
+        image: it.product_image,
+        size: it.size,
+        color: it.color,
+        unitPrice: it.unit_price,
+        qty: it.quantity,
+        lineTotal: it.line_total
       })),
-      subtotal: cart.subtotal,
-      discount,
-      shippingCost: cart.shipping,
-      total,
-      couponCode: appliedCoupon ? appliedCoupon.code : null,
-      paymentMethod: payload.paymentMethod,
-      paymentStatus: payload.paymentMethod === 'COD' ? 'PENDING' : 'PAID',
-      status: 'CONFIRMED',
-      createdAt: today()
+      subtotal: saved.subtotal,
+      discount: saved.discount,
+      shippingCost: saved.shipping_cost,
+      total: saved.total,
+      couponCode: saved.coupon_code,
+      paymentMethod: saved.payment_method,
+      paymentStatus: saved.payment_status,
+      status: saved.status,
+      createdAt: saved.created_at
     };
 
+    // Cosmetic local stock decrement — server is authoritative
     const products = getProducts();
     for (const it of cart.items){
       for (const p of products){
@@ -905,17 +980,12 @@
     }
     saveProducts(products);
 
-    if (appliedCoupon){
-      const coupons = getCoupons();
-      const c = coupons.find(x => x.code === appliedCoupon.code);
-      if (c) c.usedCount = (c.usedCount || 0) + 1;
-      saveCoupons(coupons);
-    }
+    _adminOrdersCache = null;
+    _customerOrdersCache = null;
 
-    const orders = getOrders();
-    orders.unshift(order);
-    saveOrders(orders);
+    // Only clear cart AFTER the server confirmed
     clearCart();
+
     return { ok:true, order };
   }
 
@@ -1853,7 +1923,16 @@
   function pageAccount(){
     const user = getSession();
     if (!user) { navigate('/login'); return ''; }
-    const orders = getOrders().filter(o => o.userId === user.id);
+
+    if (_customerOrdersCache === null){
+      if (!_customerOrdersLoading){
+        _customerOrdersLoading = true;
+        setTimeout(() => loadOrdersFromSupabase('customer'), 0);
+      }
+    }
+    const orders = _customerOrdersCache || [];
+    const ordersLoading = _customerOrdersCache === null;
+
     return `
       <div class="container page">
         <h1 class="page-h1 mb-2">My Account</h1>
@@ -1873,18 +1952,20 @@
           `).join('')}
         </div>
 
-        <h2 class="text-sm uppercase tracking-widest mb-3">Recent Orders (${orders.length})</h2>
-        ${orders.length === 0
-          ? '<p class="text-sm text-muted">You haven\'t placed any orders yet.</p>'
-          : `<ul>${orders.slice(0,5).map(o => `
-              <li style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap;gap:8px">
-                <div>
-                  <a href="#/account/orders/${o.id}" class="text-sm underline">${esc(o.orderNumber)}</a>
-                  <p class="text-xs text-muted">${new Date(o.createdAt).toLocaleDateString('en-IN')} · ${esc(o.status)} · ${esc(o.paymentStatus)}</p>
-                </div>
-                <div class="text-sm">${fmt(o.total / 100)}</div>
-              </li>
-            `).join('')}</ul>`}
+        <h2 class="text-sm uppercase tracking-widest mb-3">Recent Orders (${ordersLoading ? '…' : orders.length})</h2>
+        ${ordersLoading
+          ? '<p class="text-sm text-muted">Loading your orders…</p>'
+          : orders.length === 0
+            ? '<p class="text-sm text-muted">You haven\'t placed any orders yet.</p>'
+            : `<ul>${orders.slice(0,5).map(o => `
+                <li style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap;gap:8px">
+                  <div>
+                    <a href="#/account/orders/${o.id}" class="text-sm underline">${esc(o.orderNumber)}</a>
+                    <p class="text-xs text-muted">${new Date(o.createdAt).toLocaleDateString('en-IN')} · ${esc(o.status)} · ${esc(o.paymentStatus)}</p>
+                  </div>
+                  <div class="text-sm">${fmt(o.total / 100)}</div>
+                </li>
+              `).join('')}</ul>`}
 
         <div class="mt-6">
           <button class="btn btn-secondary" data-action="logout">SIGN OUT</button>
@@ -1892,10 +1973,26 @@
       </div>
     `;
   }
+
   function pageAccountOrders(){
     const user = getSession();
     if (!user) { navigate('/login'); return ''; }
-    const orders = getOrders().filter(o => o.userId === user.id);
+
+    if (_customerOrdersCache === null){
+      if (!_customerOrdersLoading){
+        _customerOrdersLoading = true;
+        setTimeout(() => loadOrdersFromSupabase('customer'), 0);
+      }
+      return `
+        <div class="container page">
+          <div class="breadcrumb"><a href="#/account">My Account</a> / Orders</div>
+          <h1 class="page-h1 mb-6">Your Orders</h1>
+          <div class="empty"><p>Loading your orders…</p></div>
+        </div>
+      `;
+    }
+
+    const orders = _customerOrdersCache;
     return `
       <div class="container page">
         <div class="breadcrumb"><a href="#/account">My Account</a> / Orders</div>
@@ -1915,11 +2012,27 @@
       </div>
     `;
   }
+
   function pageOrderDetail(id){
     const user = getSession();
     if (!user) { navigate('/login'); return ''; }
-    const order = getOrders().find(o => o.id === id && o.userId === user.id);
+
+    if (_customerOrdersCache === null){
+      if (!_customerOrdersLoading){
+        _customerOrdersLoading = true;
+        setTimeout(() => loadOrdersFromSupabase('customer'), 0);
+      }
+      return `
+        <div class="container page">
+          <div class="breadcrumb"><a href="#/account">My Account</a> / <a href="#/account/orders">Orders</a></div>
+          <div class="empty"><p>Loading order…</p></div>
+        </div>
+      `;
+    }
+
+    const order = _customerOrdersCache.find(o => o.id === id);
     if (!order) return pageNotFound();
+
     return `
       <div class="container page">
         <div class="breadcrumb"><a href="#/account">My Account</a> / <a href="#/account/orders">Orders</a> / ${esc(order.orderNumber)}</div>
@@ -1963,6 +2076,7 @@
       </div>
     `;
   }
+
   function pageWishlist(){
     const user = getSession();
     if (!user) { navigate('/login'); return ''; }
@@ -2245,17 +2359,31 @@
 
   function pageAdminOrders(){
     if (!requireAdmin()) return '';
-    const orders = getOrders();
+
+    if (_adminOrdersCache === null){
+      if (!_adminOrdersLoading){
+        _adminOrdersLoading = true;
+        setTimeout(() => loadOrdersFromSupabase('admin'), 0);
+      }
+      return adminLayout('/admin/orders',
+        '<h1 class="page-h1 mb-4">Orders</h1><div class="empty"><p>Loading orders…</p></div>');
+    }
+
+    const orders = _adminOrdersCache;
     return adminLayout('/admin/orders', `
-      <h1 class="page-h1 mb-4">Orders</h1>
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="page-h1" style="margin-bottom:0">Orders (${orders.length})</h1>
+        <button class="btn btn-secondary btn-sm" data-action="admin-refresh-orders">REFRESH</button>
+      </div>
       <table class="admin-table">
-        <thead><tr><th>#</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Payment</th><th></th></tr></thead>
+        <thead><tr><th>#</th><th>Customer</th><th>Phone</th><th>Items</th><th>Total</th><th>Status</th><th>Payment</th><th></th></tr></thead>
         <tbody>
-          ${orders.length === 0 ? '<tr><td colspan="7" class="text-muted">No orders yet.</td></tr>' : ''}
+          ${orders.length === 0 ? '<tr><td colspan="8" class="text-muted">No orders yet.</td></tr>' : ''}
           ${orders.map(o => `
             <tr>
               <td>${esc(o.orderNumber)}</td>
-              <td>${esc(o.email)}</td>
+              <td>${esc(o.shipping.fullName)}<br><span class="text-xs text-muted">${esc(o.email)}</span></td>
+              <td>${esc(o.phone)}</td>
               <td>${o.items.length}</td>
               <td>${fmt(o.total / 100)}</td>
               <td><span class="badge badge-info">${esc(o.status)}</span></td>
@@ -2270,7 +2398,16 @@
 
   function pageAdminOrderDetail(id){
     if (!requireAdmin()) return '';
-    const order = getOrders().find(o => o.id === id);
+
+    if (_adminOrdersCache === null){
+      if (!_adminOrdersLoading){
+        _adminOrdersLoading = true;
+        setTimeout(() => loadOrdersFromSupabase('admin'), 0);
+      }
+      return adminLayout('/admin/orders', '<div class="empty"><p>Loading order…</p></div>');
+    }
+
+    const order = _adminOrdersCache.find(o => o.id === id);
     if (!order) return pageNotFound();
     const statuses = ['PENDING','CONFIRMED','PROCESSING','PACKED','SHIPPED','OUT_FOR_DELIVERY','DELIVERED','CANCELLED','RETURNED'];
     return adminLayout('/admin/orders', `
@@ -2409,7 +2546,6 @@
 
   /* ==================== ROUTER ==================== */
   function render(){
-    // Boot screen until Supabase has resolved the initial session
     if (!_authReady){
       document.getElementById('root').innerHTML = '<div class="boot-screen"><p>VELORA</p></div>';
       return;
@@ -2649,6 +2785,12 @@
         toast('Coupon applied');
         break;
       }
+      case 'admin-refresh-orders': {
+        e.preventDefault();
+        _adminOrdersCache = null;
+        render();
+        break;
+      }
       case 'admin-delete-product': {
         e.preventDefault();
         if (!confirm('Delete this product?')) return;
@@ -2689,7 +2831,6 @@
     }
   });
 
-  // Submit handler — now async to support Supabase calls
   document.addEventListener('submit', async function(e){
     const form = e.target.closest('form[data-action]');
     if (!form) return;
@@ -2757,17 +2898,24 @@
           btn.disabled = true;
           btn.textContent = 'PROCESSING...';
 
-          setTimeout(() => {
-            const result = placeOrder(data);
-            window.__appliedCoupon = null;
-            if (!result.ok){
-              toast(result.error, 'error');
+          setTimeout(async () => {
+            try {
+              const result = await placeOrder(data);
+              window.__appliedCoupon = null;
+              if (!result.ok){
+                toast(result.error, 'error');
+                btn.disabled = false;
+                btn.textContent = 'PLACE ORDER';
+                return;
+              }
+              toast('Order placed!');
+              navigate('/checkout/success?order=' + encodeURIComponent(result.order.orderNumber));
+            } catch (err){
+              console.error('Order failed:', err);
+              toast('Order could not be placed. Please try again.', 'error');
               btn.disabled = false;
               btn.textContent = 'PLACE ORDER';
-              return;
             }
-            toast('Order placed!');
-            navigate('/checkout/success?order=' + encodeURIComponent(result.order.orderNumber));
           }, 800);
           break;
         }
@@ -2840,13 +2988,20 @@
         case 'admin-update-order': {
           if (!requireAdmin()) return;
           const id = form.dataset.id;
-          const orders = getOrders();
-          const o = orders.find(x => x.id === id);
-          if (!o) return toast('Order not found', 'error');
-          o.status = form.status.value;
-          o.paymentStatus = form.paymentStatus.value;
-          saveOrders(orders);
+
+          const { error } = await sb
+            .from('orders')
+            .update({
+              status:         form.status.value,
+              payment_status: form.paymentStatus.value
+            })
+            .eq('id', id);
+
+          if (error) return toast(error.message || 'Could not update order', 'error');
+
           toast('Order updated');
+          _adminOrdersCache = null;
+          render();
           break;
         }
         case 'admin-create-coupon': {
@@ -2896,17 +3051,14 @@
 
   /* ==================== INIT ==================== */
   function init(){
-    // Products and coupons still come from localStorage (unchanged)
     getProducts();
     getCoupons();
 
-    // Clean up legacy local users/session (migrated to Supabase)
     try {
       localStorage.removeItem('velora_users');
       localStorage.removeItem('velora_session');
     } catch(e) {}
 
-    // Resolve initial auth state
     sb.auth.getSession().then(({ data: { session } }) => {
       if (_authInitialized) return;
       _authInitialized = true;
@@ -2922,7 +3074,6 @@
       render();
     });
 
-    // Listen for future auth changes + password-recovery redirects
     sb.auth.onAuthStateChange((event, session) => {
       if (event === 'INITIAL_SESSION' && !_authInitialized){
         _authInitialized = true;
@@ -2931,9 +3082,11 @@
         render();
         return;
       }
-      // Update cache on all other events
       _currentUser = _sessionFromSupabase(session);
       _authReady = true;
+      // Order caches belong to the previous user — clear on auth change
+      _adminOrdersCache = null;
+      _customerOrdersCache = null;
       if (event === 'PASSWORD_RECOVERY'){
         navigate('/reset-password');
       }
